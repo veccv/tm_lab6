@@ -18,7 +18,7 @@ session_start();
 $last_unsuccessful_login = $_SESSION['last_unsuccessful_login'];
 $time_now = time();
 
-if (($last_unsuccessful_login + 60) < $time_now) {
+//if (($last_unsuccessful_login + 60) < $time_now) {
     Database::getConnection()->query("SET NAMES 'utf8'");
     $rekord = mysqli_fetch_array(Database::getConnection()->query("SELECT * FROM user WHERE login='$user'"));
 
@@ -44,9 +44,9 @@ if (($last_unsuccessful_login + 60) < $time_now) {
             exit();
         }
     }
-} else {
-    echo "Musisz poczekać minutę aby spróbować zalogować się ponownie!";
-}
+//} else {
+//    echo "Musisz poczekać minutę aby spróbować zalogować się ponownie!";
+//}
 ?>
 </BODY>
 </HTML>

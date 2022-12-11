@@ -36,40 +36,36 @@ echo "Stwórz playliste ";
 echo '<a href="create_playlist.php"><i class="glyphicon glyphicon-plus glyphicon-lg"></i> </a><br><br>';
 
 echo "<p>Wybierz film do odtworzenia:</p>";
-$songs = mysqli_fetch_all(Database::getConnection()->query("SELECT * FROM song"));
+$films = mysqli_fetch_all(Database::getConnection()->query("SELECT * FROM film"));
 
 echo '<table style="border: 1px solid #000000; border-collapse: collapse; width: 100%;">';
 echo '<thead>';
 echo '<tr>';
-echo '<th style="border: 1px solid #cccccc; padding: 40px;">Odtwórz</th>';
+echo '<th style="border: 1px solid #cccccc; padding: 8px;">Odtwórz</th>';
 echo '<th style="border: 1px solid #cccccc; padding: 8px;">Tytuł</th>';
-echo '<th style="border: 1px solid #cccccc; padding: 8px;">Autor</th>';
+echo '<th style="border: 1px solid #cccccc; padding: 8px;">Reżyser</th>';
 echo '<th style="border: 1px solid #cccccc; padding: 8px;">Data dodania</th>';
 echo '<th style="border: 1px solid #cccccc; padding: 8px;">Użytkownik</th>';
-echo '<th style="border: 1px solid #cccccc; padding: 8px;">Tekst piosenki</th>';
-echo '<th style="border: 1px solid #cccccc; padding: 8px;">Gatunek muzyczny</th>';
+echo '<th style="border: 1px solid #cccccc; padding: 8px;">Napisy</th>';
+echo '<th style="border: 1px solid #cccccc; padding: 8px;">Gatunek filmowy</th>';
 echo '</tr>';
 echo '</thead>';
 echo '<tbody>';
-foreach ($songs as $song) {
+foreach ($films as $film) {
     echo '<tr>';
-    echo '<td style="border: 1px solid #cccccc; padding: 8px;">';
-    echo '<audio controls style="width: 100%">';
-    echo '<source src="songs/' . $song[5] . '" type="audio/mpeg">';
-    echo 'Twoja przeglądarka nie obsługuje odtwarzacza audio.';
-    echo '</audio>';
-
+    echo '<td style="border: 1px solid #cccccc; padding: 8px; width: 20%">';
+    echo '<video src="films/' . $film[5] . '" autostart="0" controls width="500" height="200"></video>';
     echo '</td>';
-    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . $song[1] . '</td>';
-    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . $song[2] . '</td>';
-    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . $song[3] . '</td>';
-    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . mysqli_fetch_array(Database::getConnection()->query("SELECT * FROM user WHERE idu='$song[4]'"))[1] . '</td>';
+    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . $film[1] . '</td>';
+    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . $film[2] . '</td>';
+    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . $film[3] . '</td>';
+    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . mysqli_fetch_array(Database::getConnection()->query("SELECT * FROM user WHERE idu='$film[4]'"))[1] . '</td>';
     echo '<td style="border: 1px solid #cccccc; padding: 8px;">';
     echo '<details>';
-    echo '<summary>Kliknij tutaj, aby rozwinąć tekst piosenki</summary>';
+    echo '<summary>Kliknij tutaj, aby rozwinąć napisy</summary>';
     echo '<br>';
 
-    $lines = explode("\n", $song[6]);
+    $lines = explode("\n", $film[6]);
 
     foreach ($lines as $line) {
         echo "<p>$line</p>";
@@ -78,7 +74,7 @@ foreach ($songs as $song) {
     echo '</details>';
 
     echo '</td>';
-    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . mysqli_fetch_array(Database::getConnection()->query("SELECT * FROM musictype WHERE idmt='$song[7]'"))[1] . '</td>';
+    echo '<td style="border: 1px solid #cccccc; padding: 8px;">' . mysqli_fetch_array(Database::getConnection()->query("SELECT * FROM filmtype WHERE idft='$film[7]'"))[1] . '</td>';
     echo '</tr>';
 
 }

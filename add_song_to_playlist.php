@@ -6,18 +6,18 @@
     $playlist_id = $_GET['pl'];
     echo "<input type='hidden' name='pl' value='$playlist_id' />"
     ?>
-    <label for="ids">Wybierz tytuł utworu: </label>
+    <label for="ids">Wybierz tytuł filmu: </label>
     <select id="ids" name="ids">
         <?php
         include "Database.php";
-        $songs = mysqli_fetch_all(Database::getConnection()->query("SELECT * FROM song"));
-        foreach ($songs as $song) {
-            echo '<option value="' . $song[0] . '">' . $song[2] . ' - ' . $song[1] . '</option>';
+        $films = mysqli_fetch_all(Database::getConnection()->query("SELECT * FROM film"));
+        foreach ($films as $film) {
+            echo '<option value="' . $film[0] . '">' . $film[2] . ' - ' . $film[1] . '</option>';
         }
 
         ?>
     </select><br><br>
-    <input type="submit" value="Dodaj piosenkę do tej playlisty" name="submit">
+    <input type="submit" value="Dodaj film do tej playlisty" name="submit">
 </form>
 <br>
 <br>
