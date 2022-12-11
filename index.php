@@ -4,7 +4,7 @@
     </title>
 </head>
 <body>
-<b>Zadanie 5. MySpotify</b>
+<b>Zadanie 6. MyNetflix</b>
 <br>
 <a href="rejestruj.php">Rejestracja</a>
 <br>

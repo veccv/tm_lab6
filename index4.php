@@ -29,13 +29,13 @@ Database::getConnection()->query("SET NAMES 'utf8'");
 <br>
 <br>
 <?php
-echo "Wyślij plik muzyczny ";
+echo "Wyślij plik z filmem ";
 echo '<a href="upload_file.php"><i class="glyphicon glyphicon-cloud-upload fa-6x"></i> </a><br><br>';
 
 echo "Stwórz playliste ";
 echo '<a href="create_playlist.php"><i class="glyphicon glyphicon-plus glyphicon-lg"></i> </a><br><br>';
 
-echo "<p>Wybierz utwór do odtworzenia:</p>";
+echo "<p>Wybierz film do odtworzenia:</p>";
 $songs = mysqli_fetch_all(Database::getConnection()->query("SELECT * FROM song"));
 
 echo '<table style="border: 1px solid #000000; border-collapse: collapse; width: 100%;">';
