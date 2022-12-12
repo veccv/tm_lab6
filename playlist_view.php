@@ -81,7 +81,7 @@ foreach ($films as $film) {
 
 $idu = mysqli_fetch_array(Database::getConnection()->query("SELECT * FROM user WHERE login='$user'"))[0];
 if (mysqli_fetch_array(Database::getConnection()->query("SELECT * FROM playlistname WHERE idu='$idu' AND idpl='$playlist_id'"))[0]) {
-    echo '<tr>' . '<td colspan="7" style="border: 1px solid #cccccc; padding: 8px;"><a href="add_song_to_playlist.php?pl=' . $playlist_id . '"> Dodaj film</a></td>' . '</tr>';
+    echo '<tr>' . '<td colspan="7" style="border: 1px solid #cccccc; padding: 8px;"><a href="add_video_to_playlist.php?pl=' . $playlist_id . '"> Dodaj film</a></td>' . '</tr>';
 } else {
     echo '<tr>' . '<td colspan="7" style="border: 1px solid #cccccc; padding: 8px;"> To nie twoja playlista, nie możesz dodać filmu. </td>' . '</tr>';
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<form action="add_song.php" method="post" enctype="multipart/form-data">
+<form action="add_video.php" method="post" enctype="multipart/form-data">
     <?php
     $playlist_id = $_GET['pl'];
     echo "<input type='hidden' name='pl' value='$playlist_id' />"
